@@ -5,31 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Package Data Entry</title>
     <style>
-        h1{
-            text-align: center;
-        }
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
+                font-family: 'Arial', sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #ffffff; 
+                color: #333;
+            }
+
+        h1, h2 {
+                color: #333;
+                text-align: center;
+            }
+
+        form, table {
+                background-color: #ffffff;
+                padding: 10px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                margin: 20px auto;
+                width: 80%; 
+                max-width: 700px; 
+            }
+
         .error {
-            color: red;
-        }
+                color: red;
+                font-size: 14px;
+                text-align: center;
+            }
+
+        input[type="text"], input[type="number"], button {
+                padding: 10px 12px;
+                margin-bottom: 10px;
+                border-radius: 8px;
+                border: 1px solid #ccc;
+                width: 100%;
+                box-sizing: border-box;
+                font-size: 14px; 
+                transition: all 0.3s ease;
+            }
+
+        input[type="text"]:focus, input[type="number"]:focus {
+                border-color: #4CAF50;
+                outline: none;
+                box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+            }
+
+        button {
+                background-color: #4CAF50;
+                color: white;
+                font-size: 14px; 
+                cursor: pointer;
+                border: none;
+                transition: background-color 0.3s ease, transform 0.3s ease;
+                padding: 10px 0;
+                border-radius: 8px;
+            }
+
+        button:hover {
+                background-color: #45a049;
+                transform: translateY(-2px);
+            }
+
+        button:active {
+                background-color: #388e3c;
+                transform: translateY(0);
+            }
+
         table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 10px; 
+            }
+
         th, td {
-            padding: 10px;
-            text-align: left;
-        }
+                padding: 10px 12px;
+                text-align: left;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                background-color: #f9f9f9;
+                font-size: 14px; 
+            }
+
         th {
-            cursor: pointer;
-        }
+                background-color: #f2f2f2;
+                font-weight: bold;
+                color: #333;
+            }
+
+        td {
+                background-color: #ffffff;
+                color: #555;
+            }
+
+        th, td:hover {
+                background-color: #e6e6e6;
+            }
+
+        tr:nth-child(even) td {
+                background-color: #fafafa;
+            }
+
+        table tr:hover td {
+                background-color: #e0e0e0;
+                cursor: pointer;
+            }
+
+        table tr:first-child th {
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+
+        table tr:last-child td {
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+
     </style>
 </head>
 <body>
