@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Data Entry</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .error {
+            color: red;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Webserver #1<br>
+        Welcome to JSville Courier Management System!
+        </h1>
+    
+    <form id="packageForm">
+        <label for="recipientName">Recipient Name:</label>
+        <input type="text" id="recipientName" name="recipientName" required>
+        <br><br>
+        
+        <label for="packageID">Package ID:</label>
+        <input type="text" id="packageID" name="packageID" required>
+        <br><br>
+        
+        <label for="deliveryAddress">Delivery Address:</label>
+        <input type="text" id="deliveryAddress" name="deliveryAddress" required>
+        <br><br>
+        
+        <label for="weight">Weight (kg):</label>
+        <input type="text" id="weight" name="weight" required>
+        <br><br>
+        
+        <button type="submit">Add Package</button>
+    </form>
+
+    <div id="errorMessages" class="error"></div>
+
+    <h2>Packages List</h2>
+    <table id="packageTable">
+        <thead>
+            <tr>
+                <th onclick="sortTable(0)">Recipient Name</th>
+                <th onclick="sortTable(1)">Package ID</th>
+                <th onclick="sortTable(2)">Delivery Address</th>
+                <th onclick="sortTable(3)">Weight (kg)</th>
+                <th >Track ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Package rows will go here -->
+        </tbody>
+    </table>
+<script src="index.js"></script>
+</body>
+</html>
