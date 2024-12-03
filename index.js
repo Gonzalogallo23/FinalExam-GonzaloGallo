@@ -1,10 +1,10 @@
 const form = document.getElementById("packageForm");
 const packageTable = document.getElementById("packageTable").getElementsByTagName("tbody")[0];
 const errorMessages = document.getElementById("errorMessages");
-const existingPackageIDs = new Set(); // To store existing package IDs
-let packages = []; // To hold all packages before sorting
+const existingPackageIDs = new Set(); 
+let packages = []; 
 
-// Handle form submission
+
 form.addEventListener("submit", function(event) {
     event.preventDefault();
     const recipientName = document.getElementById("recipientName").value.trim();
@@ -12,10 +12,9 @@ form.addEventListener("submit", function(event) {
     const deliveryAddress = document.getElementById("deliveryAddress").value.trim();
     const weight = document.getElementById("weight").value.trim();
 
-    // Clear previous errors
+    
     errorMessages.innerHTML = "";
 
-    // Validate fields
     if (!/^[A-Za-z\s]+$/.test(recipientName)) {
         errorMessages.innerHTML += "Error: Recipient Name should contain only alphabetic characters.<br>";
     }
@@ -32,36 +31,36 @@ form.addEventListener("submit", function(event) {
         return; // Stop form submission if there are errors
     }
 
-    // Generate a unique tracking code
+   
     const trackingCode = generateTrackingCode(packageID, weight);
 
-    // Add valid package data to the list
+   
     const packageData = { recipientName, packageID, deliveryAddress, weight, trackingCode };
     packages.push(packageData);
-    existingPackageIDs.add(packageID); // Add to the set of existing IDs
+    existingPackageIDs.add(packageID); 
 
-    // Clear form after submission
+  
     form.reset();
     errorMessages.innerHTML = "";
 
-    // Re-render table with sorted packages
+   
     renderPackageTable();
 });
 
-// Function to generate tracking code using bitwise operations
+
 function generateTrackingCode(packageId, weight) {
     return (packageId << 4 | weight).toString(2);
 }
 
-// Function to render the table with sorted packages
+
 function renderPackageTable() {
-    // Sort the packages by weight using an efficient sorting algorithm (Merge Sort)
+
     packages = mergeSort(packages);
 
-    // Clear the table
+    
     packageTable.innerHTML = "";
 
-    // Populate the table with sorted packages
+   
     packages.forEach(pkg => {
         const row = packageTable.insertRow();
         row.insertCell(0).textContent = pkg.recipientName;
@@ -72,7 +71,7 @@ function renderPackageTable() {
     });
 }
 
-// Merge Sort algorithm to sort packages by weight
+
 function mergeSort(arr) {
     if (arr.length <= 1) return arr;
     
@@ -83,7 +82,7 @@ function mergeSort(arr) {
     return merge(left, right);
 }
 
-// Merge function for Merge Sort
+
 function merge(left, right) {
     let result = [];
     let i = 0;
@@ -102,7 +101,6 @@ function merge(left, right) {
     return result.concat(left.slice(i), right.slice(j));
 }
 
-// Function to sort table columns (for other columns if needed)
 function sortTable(columnIndex) {
     const rows = Array.from(packageTable.rows);
     const sortedRows = rows.sort((a, b) => {
@@ -110,13 +108,13 @@ function sortTable(columnIndex) {
         const cellB = b.cells[columnIndex].textContent.trim();
 
         if (columnIndex === 3) {
-            return parseFloat(cellA) - parseFloat(cellB); // Sort numerically for Weight
+            return parseFloat(cellA) - parseFloat(cellB);
         } else {
-            return cellA.localeCompare(cellB); // Sort alphabetically for other columns
+            return cellA.localeCompare(cellB); 
         }
     });
 
-    // Rebuild the table with sorted rows
+
     packageTable.innerHTML = "";
     sortedRows.forEach(row => packageTable.appendChild(row));
 }
